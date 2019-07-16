@@ -1,5 +1,5 @@
 <template>
-  <v-card color="blue darken-4">
+  <v-card :color="cardColor">
     <div class="text">
       <div class="food-title">{{ foodTitle }}</div>
       <div class="food-description" v-for="item in foodDescription" v-bind:key=item.id>
@@ -17,7 +17,8 @@ export default {
 //   }),
   props: {
       foodTitle: String,
-      foodDescription: Array
+      foodDescription: Array,
+      cardColor: String
   }
 };
 </script>
@@ -28,11 +29,11 @@ export default {
 }
 
 .food-title{
-    font-size: 3rem;
+    font-size: 1.8rem;
 }
 
 .food-description{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 </style>
 
