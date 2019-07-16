@@ -11,12 +11,13 @@ import React, {Fragment} from 'react';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 import { ApplicationProvider, Layout } from 'react-native-ui-kitten';
 import { HomeScreen } from './HomeScreen/HomeScreen'
+import { SignInForm3 } from './signInForm3/signInForm3.component'
 
 const App = () => (
   <ApplicationProvider
     mapping={mapping}
     theme={lightTheme}>
-    <HomeScreen/>
+    <SignInForm3/>
   </ApplicationProvider>
 );
 
