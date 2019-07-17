@@ -2,7 +2,7 @@
   <v-card class="card" dark height="100%">
     <div class="order-num">{{ orderNum }}</div>
     <hr />
-    <SingleOrder
+    <SingleSetMeal
       v-for="order in orders"
       v-bind:key="order.id"
       :foodTitle="order.foodTitle"
@@ -13,10 +13,13 @@
 </template>
 
 <script>
-import SingleOrder from "./SingleOrder";
+import SingleSetMeal from "./SingleSetMeal";
 export default {
   components: {
-    SingleOrder
+    SingleSetMeal
+  },
+  props: {
+
   },
   data: () => ({
     orderNum: "#123",
