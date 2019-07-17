@@ -3,11 +3,11 @@
     <div class="order-num">{{ orderNum }}</div>
     <hr />
     <SingleSetMeal
-      v-for="order in orders"
-      v-bind:key="order.id"
-      :foodTitle="order.foodTitle"
-      :foodDescription="order.foodDescription"
-      :cardColor="colorList[order.id%3]"
+      v-for="meal in meals"
+      v-bind:key="meal.id"
+      :foodTitle="meal.foodTitle"
+      :foodDescription="meal.foodDescription"
+      :cardColor="colorList[meal.id%3]"
     />
   </v-card>
 </template>
@@ -19,32 +19,10 @@ export default {
     SingleSetMeal
   },
   props: {
-
+    orderNum: String,
+    meals: Array
   },
   data: () => ({
-    orderNum: "#123",
-    orders: [
-      {
-        id: 0,
-        foodTitle: "Filet Meal",
-        foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
-      },
-      {
-        id: 1,
-        foodTitle: "Filet Meal",
-        foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
-      },
-      {
-        id: 2,
-        foodTitle: "Filet Meal",
-        foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
-      },
-      {
-        id: 3,
-        foodTitle: "Filet Meal",
-        foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
-      }
-    ],
     colorList: ["blue darken-4", "red darken-4", "green darken-4"]
   })
 };

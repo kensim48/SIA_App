@@ -3,7 +3,7 @@
     <div class="top row">
       <v-layout class="layout">
         <v-flex xs6>
-          <SingleCard />
+          <SingleCard :orderNum="orders[0].orderNum" :meals="orders[0].meals"/>
         </v-flex>
         <v-flex xs6>
           <SingleCard />
@@ -45,16 +45,46 @@ export default {
   },
   data: () => ({
     pageNo: 1,
-    maxPages: 6
+    maxPages: 6,
+    orders: [
+      {
+        orderNum: "#123",
+        meals: [
+          {
+            id: 0,
+            foodTitle: "Filet Meal",
+            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+          },
+          {
+            id: 1,
+            foodTitle: "Filet Meal",
+            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+          },
+          {
+            id: 2,
+            foodTitle: "Filet Meal",
+            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+          },
+          {
+            id: 3,
+            foodTitle: "Filet Meal",
+            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+          }
+        ],
+        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+      }
+    ]
   }),
   methods: {
     pageRight() {
       console.log("right");
-      this.pageNo<this.maxPages?this.pageNo++:console.log("fail");
+      this.pageNo < this.maxPages ? this.pageNo++ : console.log("fail");
     },
     pageLeft() {
-      this.pageNo>1?this.pageNo--:null;
+      this.pageNo > 1 ? this.pageNo-- : null;
     }
+  },
+  mounted() {
   }
 };
 </script>
