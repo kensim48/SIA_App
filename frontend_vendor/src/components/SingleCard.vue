@@ -7,7 +7,7 @@
       v-bind:key="meal.id"
       :foodTitle="meal.foodTitle"
       :foodDescription="meal.foodDescription"
-      :cardColor="colorList[meal.id%3]"
+      :cardColor="colorList[meal.id%colorList.length]"
     />
   </v-card>
 </template>
