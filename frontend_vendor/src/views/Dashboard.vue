@@ -3,7 +3,7 @@
     <div class="top row">
       <v-layout v-if="pageNo==1" class="layout">
         <v-flex v-for="order in firstPageFirstRowOrders" v-bind:key="order.orderNum" xs6>
-          <SingleCard :orderNum="order.orderNum" :meals="order.meals" />
+          <DoubleCard :orderNum="order.orderNum" :meals="order.meals" />
         </v-flex>
       </v-layout>
       <v-layout v-else class="layout">
@@ -34,10 +34,12 @@
 
 <script>
 import SingleCard from "../components/SingleCard";
+import DoubleCard from "../components/DoubleCard";
 
 export default {
   components: {
-    SingleCard
+    SingleCard,
+    DoubleCard
   },
   computed: {
     firstPageFirstRowOrders: function() {
@@ -87,8 +89,7 @@ export default {
             foodTitle: "Filet Meal",
             foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
-        ],
-        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+        ]
       },
       {
         orderNum: "#124",
@@ -113,8 +114,7 @@ export default {
             foodTitle: "Filet Meal",
             foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
-        ],
-        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+        ]
       },
       {
         orderNum: "#125",
@@ -139,8 +139,7 @@ export default {
             foodTitle: "Filet Meal",
             foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
-        ],
-        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+        ]
       },
       {
         orderNum: "#126",
@@ -165,8 +164,7 @@ export default {
             foodTitle: "Filet Meal",
             foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
-        ],
-        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+        ]
       },
       {
         orderNum: "#127",
@@ -191,8 +189,7 @@ export default {
             foodTitle: "Filet Meal",
             foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
-        ],
-        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+        ]
       },
       {
         orderNum: "#128",
@@ -217,8 +214,7 @@ export default {
             foodTitle: "Filet Meal",
             foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
-        ],
-        colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+        ]
       }
     ]
   }),
