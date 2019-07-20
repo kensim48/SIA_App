@@ -77,7 +77,7 @@ export default {
           {
             id: 1,
             foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            foodDescription: ["Filet Burger", "Medium Fries"]
           },
           {
             id: 2,

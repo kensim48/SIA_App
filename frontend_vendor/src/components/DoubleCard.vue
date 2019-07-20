@@ -18,7 +18,7 @@
           v-bind:key="index"
           :foodTitle="meal.foodTitle"
           :foodDescription="meal.foodDescription"
-          :cardColor="colorList[index+1%colorList.length]"
+          :cardColor="colorList[(index+1)%colorList.length]"
         />
       </v-flex>
     </v-layout>
@@ -36,7 +36,7 @@ export default {
     meals: Array
   },
   data: () => ({
-    colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+    colorList: ["blue darken-4", "red darken-4"]
   }),
   computed: {
     leftColMeals: function() {
