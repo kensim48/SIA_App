@@ -3,11 +3,11 @@
     <div class="order-num">{{ orderNum }}</div>
     <hr />
     <SingleSetMeal
-      v-for="meal in meals"
-      v-bind:key="meal.id"
+      v-for="(meal, index) in meals"
+      v-bind:key="index"
       :foodTitle="meal.foodTitle"
       :foodDescription="meal.foodDescription"
-      :cardColor="colorList[meal.id%colorList.length]"
+      :cardColor="colorList[index%colorList.length]"
     />
   </v-card>
 </template>
