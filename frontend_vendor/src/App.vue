@@ -5,7 +5,8 @@
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>Application</v-toolbar-title>
       </v-toolbar>
-      <v-navigation-drawer v-model="drawer" clipped hide-overlay fixed app disable-resize-watcher>
+      <v-navigation-drawer v-model="drawer" absolute
+      temporary disable-resize-watcher>
         <v-list dense>
           <v-list-tile @click>
             <v-list-tile-action>
