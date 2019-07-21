@@ -26,72 +26,74 @@
               v-model="menuItems[selectedItem].description"
               box
             ></v-textarea>
+            <v-text-field
+              style="width: 100%;"
+              v-model="menuItems[selectedItem].price"
+              label="Price of meal"
+              box
+            ></v-text-field>
           </v-card-title>
-          <div
-            v-for="(question, indexQn) in menuItems[selectedItem].questions"
-            :key="indexQn"
-            class="question"
-          >
-            <hr style="margin-bottom: 20px;" />
-            <v-layout row wrap>
-              <v-flex xs12>
-                <v-text-field
-                  v-model="menuItems[selectedItem].questions[indexQn].title"
-                  label="Title of question"
-                  outline
-                ></v-text-field>
-                <div v-if="question.type==0">(Select one)</div>
-                <div v-else-if="question.type==1">
-                  <v-layout row wrap>
-                    <v-flex xs12>(Select multiple)</v-flex>
-                    <v-flex xs5>
-                      <v-select
-                        v-model="menuItems[selectedItem].questions[indexQn].optionLimits[0]"
-                        :items="minMaxItems"
-                        label="Minimum"
-                      ></v-select>
-                    </v-flex>
-                    <v-flex xs2 />
-                    <v-flex xs5>
-                      <v-select
-                        v-model="menuItems[selectedItem].questions[indexQn].optionLimits[1]"
-                        :items="maxItems(indexQn)"
-                        label="Maximum"
-                      ></v-select>
-                    </v-flex>
-                  </v-layout>
-                </div>
-              </v-flex>
-              <v-flex v-for="(option, indexOp) in question.options" :key="indexOp" xs12>
-                <v-text-field
-                  v-model="menuItems[selectedItem].questions[indexQn].options[indexOp]"
-                  :label="(indexOp+1).toString()"
-                  class="option-text"
-                ></v-text-field>
-                <v-btn
-                  fab
-                  small
-                  @click="menuItems[selectedItem].questions[indexQn].options.splice(indexOp,1)"
-                  color="primary"
-                  :disabled="menuItems[selectedItem].questions[indexQn].options.length<=1"
-                >
-                  <v-icon dark>remove</v-icon>
-                </v-btn>
-              </v-flex>
-              <v-flex xs12>
-                <v-btn
-                  dark
-                  @click="menuItems[selectedItem].questions[indexQn].options.push('')"
-                  color="primary"
-                >add option</v-btn>
-              </v-flex>
-            </v-layout>
-          </div>
-          <v-card-actions>
-            <v-spacer></v-spacer>
+          <div class="question">
+            <div v-for="(question, indexQn) in menuItems[selectedItem].questions" :key="indexQn">
+              <hr v-if="indexQn!=0" style="margin: 20px 0;" />
+              <v-layout row wrap>
+                <v-flex xs12>
+                  <v-text-field
+                    v-model="menuItems[selectedItem].questions[indexQn].title"
+                    label="Title of question"
+                    outline
+                  ></v-text-field>
+                  <div v-if="question.type==0">Type of qn: Select one option only</div>
+                  <div v-else-if="question.type==1">
+                    <v-layout row wrap>
+                      <v-flex xs12>Type of qn: Select multiple options</v-flex>
+                      <v-flex xs4>
+                        <v-select
+                          v-model="menuItems[selectedItem].questions[indexQn].optionLimits[0]"
+                          :items="minMaxItems"
+                          label="Minimum"
+                        ></v-select>
+                      </v-flex>
+                      <v-flex xs2 />
+                      <v-flex xs4>
+                        <v-select
+                          v-model="menuItems[selectedItem].questions[indexQn].optionLimits[1]"
+                          :items="maxItems(indexQn)"
+                          label="Maximum"
+                        ></v-select>
+                      </v-flex>
+                      <v-flex xs2 />
+                    </v-layout>
+                  </div>
+                </v-flex>
+                <v-flex v-for="(option, indexOp) in question.options" :key="indexOp" xs12>
+                  <v-text-field
+                    v-model="menuItems[selectedItem].questions[indexQn].options[indexOp]"
+                    :label="(indexOp+1).toString()"
+                    class="option-text"
+                  ></v-text-field>
+                  <v-btn
+                    fab
+                    small
+                    @click="menuItems[selectedItem].questions[indexQn].options.splice(indexOp,1)"
+                    color="primary"
+                    :disabled="menuItems[selectedItem].questions[indexQn].options.length<=1"
+                  >
+                    <v-icon dark>remove</v-icon>
+                  </v-btn>
+                </v-flex>
+                <v-flex xs12>
+                  <v-btn
+                    dark
+                    @click="menuItems[selectedItem].questions[indexQn].options.push('')"
+                    color="secondary"
+                  >Add option</v-btn>
+                </v-flex>
+              </v-layout>
+            </div>
             <v-menu open-on-hover top offset-y>
               <template v-slot:activator="{ on }">
-                <v-btn color="primary" dark v-on="on">Dropdown</v-btn>
+                <v-btn pa-2 color="primary" dark v-on="on">Add question</v-btn>
               </template>
 
               <v-list>
@@ -100,7 +102,13 @@
                 </v-list-tile>
               </v-list>
             </v-menu>
-            <v-btn color="green darken-1" flat="flat" @click="itemDialog = false">Agree</v-btn>
+          </div>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn color="primary" flat="flat" @click="itemDialog = false">Cancel</v-btn>
+            <v-btn color="primary" flat="flat" @click="itemDialog = false">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -125,12 +133,13 @@ export default {
         ? this.menuItems[this.selectedItem].questions.push({
             type: 0,
             title: "",
+            optionLimits: [null, null],
             options: [""]
           })
         : this.menuItems[this.selectedItem].questions.push({
             type: 1,
-            optionLimits: [null, null],
             title: "",
+            optionLimits: [null, null],
             options: [""]
           });
     }
@@ -139,27 +148,30 @@ export default {
     itemDialog: false,
     selectedItem: 0,
     minMaxItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    typesOfQuestion: ["Select one", "Select multiple"],
+    typesOfQuestion: ["Select one option", "Select multiple options"],
     menuItems: [
       {
-        title: "asdasd",
-        description: "asdasdddsczxc",
+        title: "Chicken rice meal",
+        description: "This is very good chicken rice, includes cucumber,chicken and rice",
+        price: 0,
         questions: [
           {
-            type: 1,
-            optionLimits: [1, 10],
-            title: "what drink do you want",
-            options: ["coke", "sprite", "7-up"]
+            type: 0,
+            optionLimits: [null, null],
+            title: "What drink do you want",
+            options: ["coke", "sprite", "7-up", "random goop in my house"]
           },
           {
             type: 0,
-            title: "what drink do you want",
-            options: ["coke", "sprite", "7-up"]
+            optionLimits: [null, null],
+            title: "want cucumber?",
+            options: ["yes", "no"]
           },
           {
             type: 0,
-            title: "what drink do you want",
-            options: ["coke", "sprite", "7-up"]
+            optionLimits: [null, null],
+            title: "How much rice you want?",
+            options: ["Tiny bit", "a bit more", "QUite a lot", "even even more"]
           }
         ]
       },
