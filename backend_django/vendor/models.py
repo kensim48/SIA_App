@@ -13,7 +13,7 @@ class Meal(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    meal_owner = models.ForeignKey(Store, default=None)
+    meal_owner = models.ForeignKey(Store, default=None, on_delete=models.CASCADE)
 
 
 class Question(models.Model):
@@ -21,10 +21,10 @@ class Question(models.Model):
     title = models.CharField(max_length=255)
     option_limit_lower = models.IntegerField()
     option_limit_upper = models.IntegerField()
-    meal = models.ForeignKey(Meal, default=None)
+    meal = models.ForeignKey(Meal, default=None, on_delete=models.CASCADE)
 
 
 class Options(models.Model):
     option_ID = models.AutoField(primary_key=True)
     option_text = models.CharField(max_length=255)
-    question = models.ForeignKey(Question, default=None)
+    question = models.ForeignKey(Question, default=None, on_delete=models.CASCADE)
