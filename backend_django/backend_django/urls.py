@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from vendor.views import MenuItems
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vendor/', include('vendor.urls'))
+    path('vendor/', MenuItems.as_view())
 ]

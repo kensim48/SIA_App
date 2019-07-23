@@ -19,12 +19,13 @@ class Meal(models.Model):
 class Question(models.Model):
     question_ID = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
+    type = models.IntegerField()
     option_limit_lower = models.IntegerField()
     option_limit_upper = models.IntegerField()
     meal = models.ForeignKey(Meal, default=None, on_delete=models.CASCADE)
 
 
-class Options(models.Model):
+class Option(models.Model):
     option_ID = models.AutoField(primary_key=True)
     option_text = models.CharField(max_length=255)
     question = models.ForeignKey(Question, default=None, on_delete=models.CASCADE)

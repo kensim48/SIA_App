@@ -11,7 +11,7 @@
       </v-layout>
     </v-container>
     <v-layout row justify-center>
-      <v-dialog persistent v-model="itemDialog" width="600px">
+      <v-dialog persistent v-model="itemDialog" width="600px" v-if="menuItems[selectedItem]">
         <v-card>
           <v-card-title>
             <v-text-field
@@ -91,24 +91,22 @@
                 </v-flex>
               </v-layout>
             </div>
+          </div>
+
+          <v-card-actions>
             <v-menu open-on-hover top offset-y>
               <template v-slot:activator="{ on }">
                 <v-btn pa-2 color="primary" dark v-on="on">Add question</v-btn>
               </template>
-
               <v-list>
                 <v-list-tile v-for="(type, index) in typesOfQuestion" :key="index" @click>
                   <v-list-tile-title @click="createNewQuestion(index)">{{ type }}</v-list-tile-title>
                 </v-list-tile>
               </v-list>
             </v-menu>
-          </div>
-
-          <v-card-actions>
             <v-spacer></v-spacer>
-
-            <v-btn color="primary" flat="flat" @click="itemDialog = false">Cancel</v-btn>
-            <v-btn color="primary" flat="flat" @click="itemDialog = false">Save</v-btn>
+            <!-- <v-btn color="primary" flat="flat" @click="itemDialog = false">Cancel</v-btn> -->
+            <v-btn color="primary" flat="flat" @click="saveItem">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -117,8 +115,29 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  mounted() {
+    axios.get("http://localhost:8000/vendor/").then(response => {
+      console.log(response.data);
+      this.menuItems = response.data.menuItems;
+      this.storeName = response.data.storeName;
+    });
+  },
   methods: {
+    saveItem() {
+      this.itemDialog = false;
+      axios
+        .post("http://127.0.0.1:8000/vendor/", {
+          menuItems: this.menuItems,
+          storeName: this.storeName
+        })
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {});
+    },
     clickMenuItem(index) {
       this.selectedItem = index;
       this.itemDialog = true;
@@ -149,54 +168,8 @@ export default {
     selectedItem: 0,
     minMaxItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     typesOfQuestion: ["Select one option", "Select multiple options"],
-    menuItems: [
-      {
-        title: "Chicken rice meal",
-        description: "This is very good chicken rice, includes cucumber,chicken and rice",
-        price: 0,
-        questions: [
-          {
-            type: 0,
-            optionLimits: [null, null],
-            title: "What drink do you want",
-            options: ["coke", "sprite", "7-up", "random goop in my house"]
-          },
-          {
-            type: 0,
-            optionLimits: [null, null],
-            title: "want cucumber?",
-            options: ["yes", "no"]
-          },
-          {
-            type: 0,
-            optionLimits: [null, null],
-            title: "How much rice you want?",
-            options: ["Tiny bit", "a bit more", "QUite a lot", "even even more"]
-          }
-        ]
-      },
-      {
-        title: "asdasd"
-      },
-      {
-        title: "asdasd"
-      },
-      {
-        title: "asdasd"
-      },
-      {
-        title: "asdasd"
-      },
-      {
-        title: "asdasd"
-      },
-      {
-        title: "asdasd"
-      },
-      {
-        title: "asdasd"
-      }
-    ]
+    menuItems: [],
+    storeName: ""
   })
 };
 </script>
