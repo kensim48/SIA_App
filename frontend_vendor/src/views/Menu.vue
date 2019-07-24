@@ -124,13 +124,15 @@ export default {
       this.menuItems = response.data.menuItems;
       this.storeName = response.data.storeName;
     });
+    
   },
   methods: {
     saveItem() {
       this.itemDialog = false;
+      console.log(this.menuItems[this.selectedItem])
       axios
         .post("http://127.0.0.1:8000/vendor/", {
-          menuItems: this.menuItems,
+          menuItems: this.menuItems[this.selectedItem],
           storeName: this.storeName
         })
         .then(response => {
@@ -141,6 +143,7 @@ export default {
     clickMenuItem(index) {
       this.selectedItem = index;
       this.itemDialog = true;
+      console.log(this.menuItems[this.selectedItem]);
     },
     maxItems(indexQn) {
       return this.minMaxItems.slice(

@@ -8,6 +8,7 @@ class Store(models.Model):
     name = models.CharField(max_length=255)
 
 
+# add unique hash for meal
 class Meal(models.Model):
     meal_ID = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)

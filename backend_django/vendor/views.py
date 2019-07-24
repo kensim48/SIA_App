@@ -29,6 +29,7 @@ class MenuItems(APIView):
 
             single_meal = {
                 "title": meal.title,
+                "mealID": meal.meal_ID,
                 "description": meal.description,
                 "price": meal.price,
                 "questions": question_list
@@ -65,6 +66,7 @@ class MenuItems(APIView):
                 question_list.append(single_question)
 
             single_meal = {
+                "mealID": meal.meal_ID,
                 "title": meal.title,
                 "description": meal.description,
                 "price": meal.price,
