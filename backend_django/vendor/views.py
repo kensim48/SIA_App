@@ -96,3 +96,8 @@ class MenuItems(APIView):
         #         }
         #     )
         # return Response(full_list)
+
+class singleMeal(APIView):
+
+    def post(self):
+        pass
