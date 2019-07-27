@@ -8,6 +8,12 @@
             <v-card-text class="px-0">{{menuItem.title}}</v-card-text>
           </v-card>
         </v-flex>
+        <v-flex xs2>
+          <v-card @click.native="createNewMenuItem(menuItems.length)" dark color="grey darken-2">
+            <v-img src="plus.png" aspect-ratio="2.75"></v-img>
+            <v-card-text class="px-0">New menu item</v-card-text>
+          </v-card>
+        </v-flex>
       </v-layout>
     </v-container>
     <v-layout row justify-center>
@@ -106,6 +112,7 @@
             </v-menu>
             <v-spacer></v-spacer>
             <!-- <v-btn color="primary" flat="flat" @click="itemDialog = false">Cancel</v-btn> -->
+            <v-btn color="primary" flat="flat" @click="cancelItem">Cancel</v-btn>
             <v-btn color="primary" flat="flat" @click="saveItem">Save</v-btn>
           </v-card-actions>
         </v-card>
@@ -119,16 +126,20 @@ import axios from "axios";
 
 export default {
   mounted() {
-    axios.get("http://localhost:8000/vendor/").then(response => {
-      console.log(response.data);
-      this.menuItems = response.data.menuItems;
-      this.storeName = response.data.storeName;
-    });
+    this.getEntireMenu();
   },
   methods: {
+    getEntireMenu() {
+      axios.get("http://localhost:8000/vendor/").then(response => {
+        console.log(response.data);
+        this.menuItems = response.data.menuItems;
+        this.storeName = response.data.storeName;
+        this.storeID = response.data.storeID;
+      });
+    },
     saveItem() {
       this.itemDialog = false;
-      console.log(this.menuItems[this.selectedItem])
+      console.log(this.menuItems[this.selectedItem]);
       axios
         .post("http://127.0.0.1:8000/vendor/", {
           meal: this.menuItems[this.selectedItem]
@@ -137,6 +148,22 @@ export default {
           console.log(response.data);
         })
         .catch(error => {});
+    },
+    cancelItem() {
+      this.itemDialog = false;
+      this.getEntireMenu();
+    },
+    createNewMenuItem(index) {
+      this.selectedItem = index;
+      this.itemDialog = true;
+      this.menuItems.push({
+        title: "",
+        description: "",
+        price: 0.0,
+        questions: [],
+        store_ID: this.storeID
+      });
+      console.log(this.selectedItem);
     },
     clickMenuItem(index) {
       this.selectedItem = index;
@@ -170,7 +197,8 @@ export default {
     minMaxItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     typesOfQuestion: ["Select one option", "Select multiple options"],
     menuItems: [],
-    storeName: ""
+    storeName: "",
+    storeID: 0
   })
 };
 </script>

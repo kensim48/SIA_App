@@ -40,19 +40,26 @@ class MenuItems(APIView):
 
         single_store = {
             "storeName": store.name,
-            "menuItems": meal_list
+            "menuItems": meal_list,
+            "storeID":  store.store_ID
         }
         return Response(single_store)
 
     def post(self, request):
         sent_meal = json.loads(request.body)['meal']
-        Meal.objects.filter(meal_hash=sent_meal["meal_hash"]).delete()
         store = Store.objects.get(store_ID=sent_meal["store_ID"])
-        meal = Meal.objects.create(meal_hash=sent_meal["meal_hash"],
-                                   title=sent_meal["title"],
-                                   description=sent_meal["description"],
-                                   price=sent_meal["price"],
-                                   meal_owner=store)
+        if 'meal_hash' in sent_meal:
+            Meal.objects.filter(meal_hash=sent_meal["meal_hash"]).delete()
+            meal = Meal.objects.create(meal_hash=sent_meal["meal_hash"],
+                                       title=sent_meal["title"],
+                                       description=sent_meal["description"],
+                                       price=sent_meal["price"],
+                                       meal_owner=store)
+        else:
+            meal = Meal.objects.create(title=sent_meal["title"],
+                                       description=sent_meal["description"],
+                                       price=sent_meal["price"],
+                                       meal_owner=store)
         # if breaks remove meal_id
         meal.save()
         for question in sent_meal["questions"]:
