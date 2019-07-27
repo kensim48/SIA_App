@@ -9,18 +9,18 @@ class StoreAdmin(admin.ModelAdmin):
 
 
 class MealAdmin(admin.ModelAdmin):
-    list_display = ('meal_ID', 'meal_hash', 'title', 'description', 'price', 'meal_owner')
-    ordering = ['meal_ID']
+    list_display = ('meal_hash', 'title', 'description', 'price', 'meal_owner')
+    ordering = ['meal_hash']
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('question_ID', 'title', 'type', 'option_limit_lower', 'option_limit_upper', 'meal')
-    ordering = ['question_ID']
+    list_display = ('question_hash', 'title', 'type', 'option_limit_lower', 'option_limit_upper', 'meal')
+    ordering = ['question_hash']
 
 
 class OptionAdmin(admin.ModelAdmin):
-    list_display = ('option_ID', 'option_text', 'question')
-    ordering = ['option_ID']
+    list_display = ('option_hash', 'option_text', 'question')
+    ordering = ['option_hash']
 
 
 admin.site.register(Option, OptionAdmin)

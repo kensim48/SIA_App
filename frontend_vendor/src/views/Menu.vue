@@ -124,7 +124,6 @@ export default {
       this.menuItems = response.data.menuItems;
       this.storeName = response.data.storeName;
     });
-    
   },
   methods: {
     saveItem() {
@@ -132,8 +131,7 @@ export default {
       console.log(this.menuItems[this.selectedItem])
       axios
         .post("http://127.0.0.1:8000/vendor/", {
-          menuItems: this.menuItems[this.selectedItem],
-          storeName: this.storeName
+          meal: this.menuItems[this.selectedItem]
         })
         .then(response => {
           console.log(response.data);
