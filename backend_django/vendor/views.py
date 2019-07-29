@@ -9,7 +9,7 @@ from vendor.models import Store, Meal, Question, Option
 STORE_ID = 1
 
 
-class MenuItems(APIView):
+class OrderList(APIView):
     def get(self, request):
 
         store = Store.objects.get(store_ID=STORE_ID)
@@ -74,8 +74,3 @@ class MenuItems(APIView):
                                                       question=single_question)
                 single_option.save()
         return Response("done")
-
-# class singleMeal(APIView):
-#
-#     def post(self):
-#         pass
