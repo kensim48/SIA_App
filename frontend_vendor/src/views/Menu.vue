@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     getEntireMenu() {
-      axios.get("http://localhost:8000/vendor/OrderList/").then(response => {
+      axios.get("http://localhost:8000/vendor/MenuList/").then(response => {
         console.log(response.data);
         this.menuItems = response.data.menuItems;
         this.storeName = response.data.storeName;
@@ -141,7 +141,7 @@ export default {
       this.itemDialog = false;
       console.log(this.menuItems[this.selectedItem]);
       axios
-        .post("http://127.0.0.1:8000/vendor/OrderList/", {
+        .post("http://127.0.0.1:8000/vendor/MenuList/", {
           meal: this.menuItems[this.selectedItem]
         })
         .then(response => {

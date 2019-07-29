@@ -9,7 +9,7 @@ from vendor.models import Store, Meal, Question, Option
 STORE_ID = 1
 
 
-class OrderList(APIView):
+class MenuList(APIView):
     def get(self, request):
 
         store = Store.objects.get(store_ID=STORE_ID)

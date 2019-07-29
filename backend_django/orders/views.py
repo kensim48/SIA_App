@@ -10,7 +10,7 @@ from orders.models import Order, OrderMeal, OrderDetails
 STORE_ID = 1
 
 
-class Orders(APIView):
+class OrderList(APIView):
     def get(self, request):
         store = Store.objects.get(store_ID=STORE_ID)
         orders = Order.objects.filter(store=store)
@@ -28,7 +28,7 @@ class Orders(APIView):
                                   "orderDetail": order_detail_list})
             order_list.append({"orderNum": order.order_hash,
                                "meals": meal_list})
-        return Response(order_list)
+        return Response({"orders": order_list})
 
 
 class ClearOrder(APIView):
