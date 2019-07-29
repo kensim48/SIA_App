@@ -74,23 +74,23 @@ export default {
         meals: [
           {
             id: 0,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 1,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Fries"]
           },
           {
             id: 2,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 3,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
         ]
       },
@@ -99,23 +99,23 @@ export default {
         meals: [
           {
             id: 0,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 1,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 2,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 3,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
         ]
       },
@@ -124,23 +124,23 @@ export default {
         meals: [
           {
             id: 0,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 1,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 2,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 3,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
         ]
       },
@@ -149,23 +149,23 @@ export default {
         meals: [
           {
             id: 0,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 1,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 2,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 3,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
         ]
       },
@@ -174,23 +174,23 @@ export default {
         meals: [
           {
             id: 0,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 1,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 2,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 3,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
         ]
       },
@@ -199,23 +199,23 @@ export default {
         meals: [
           {
             id: 0,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 1,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 2,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           },
           {
             id: 3,
-            foodTitle: "Filet Meal",
-            foodDescription: ["Filet Burger", "Medium Sprite", "Medium Fries"]
+            orderMeal: "Filet Meal",
+            orderDetail: ["Filet Burger", "Medium Sprite", "Medium Fries"]
           }
         ]
       }
