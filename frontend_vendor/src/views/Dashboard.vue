@@ -37,6 +37,7 @@
 <script>
 import SingleCard from "../components/SingleCard";
 import DoubleCard from "../components/DoubleCard";
+import axios from 'axios';
 
 export default {
   components: {
@@ -44,7 +45,7 @@ export default {
     DoubleCard
   },
   mounted() {
-    getAllOrders();
+    this.getAllOrders();
   },
   computed: {
     firstPageFirstRowOrders: function() {
@@ -111,7 +112,7 @@ export default {
       axios.get("http://localhost:8000/orders/OrderList/").then(response => {
         console.log(response.data);
         this.orders = response.data.orders;
-        this.maxPages = ceil((this.orders - 5) / 6) + 1;
+        this.maxPages = Math.ceil((this.orders - 5) / 6) + 1;
         this.pageNo = this.pageNo > this.maxPages ? this.maxPages : this.pageNo;
       });
     }

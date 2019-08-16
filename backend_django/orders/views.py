@@ -13,21 +13,22 @@ STORE_ID = 1
 class OrderList(APIView):
     def get(self, request):
         store = Store.objects.get(store_ID=STORE_ID)
-        orders = Order.objects.filter(store=store)
+        orders = Order.objects.filter(store=store, status=1)
         order_list = []
         for order in orders:
             # status 1 means havent been cooked
-            order_meals = OrderMeal.objects.filter(order=order, status=1)
+            order_meals = OrderMeal.objects.filter(order=order)
             meal_list = []
             for order_meal in order_meals:
                 order_details = OrderDetails.objects.filter(meal=order_meal)
                 order_detail_list = []
                 for order_detail in order_details:
                     order_detail_list.append(order_detail.detail)
-                meal_list.append({"orderMeal": order_meal.title,
-                                  "orderDetail": order_detail_list})
-            order_list.append({"orderNum": order.order_hash,
+                meal_list.append({"foodTitle": order_meal.title,
+                                  "foodDescription": order_detail_list})
+            order_list.append({"orderNum": order.name,
                                "meals": meal_list})
+        print(order_list)
         return Response({"orders": order_list})
 
 
