@@ -3,7 +3,7 @@
     <div v-if="$route.name!='login'">
       <v-toolbar app fixed clipped-left dark height="50">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>Greenup</v-toolbar-title>
+        <v-toolbar-title>Greenup: Tian Tian Chicken Rice</v-toolbar-title>
       </v-toolbar>
       <v-navigation-drawer v-model="drawer" absolute
       temporary disable-resize-watcher>

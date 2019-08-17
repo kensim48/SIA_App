@@ -23,7 +23,7 @@ export default {
     meals: Array
   },
   data: () => ({
-    colorList: ["blue darken-4", "red darken-4", "green darken-4"]
+    colorList: ["blue darken-4", "orange darken-4"]
   })
 };
 </script>

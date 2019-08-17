@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card" dark height="100%">
+  <v-card class="card" dark height="100%" @click="qr_scanner()">
     <div class="order-num">{{ orderNum }}</div>
     <hr />
     <v-layout>
@@ -27,6 +27,7 @@
 
 <script>
 import SingleSetMeal from "./SingleSetMeal";
+import EventBus from "../EventBus";
 export default {
   components: {
     SingleSetMeal
@@ -36,7 +37,7 @@ export default {
     meals: Array
   },
   data: () => ({
-    colorList: ["blue darken-4", "red darken-4"]
+    colorList: ["blue darken-4", "orange darken-4"]
   }),
   computed: {
     leftColMeals: function() {
@@ -54,6 +55,11 @@ export default {
         rightMeals.push(this.meals[i]);
       }
       return rightMeals;
+    }
+  },
+  methods: {
+    qr_scanner() {
+      EventBus.$emit('QR_SCANNER')
     }
   }
 };
