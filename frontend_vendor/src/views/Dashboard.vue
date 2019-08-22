@@ -30,6 +30,20 @@
         </v-btn>
       </div>
     </v-container>
+    <v-dialog v-model="dialog" width="500">
+      <v-card>
+        <v-card-title class="blue lighten-2" primary-title>Scan Container</v-card-title>
+
+        <v-card-text>Scan reusuable container's code to notify user that the order is ready</v-card-text>
+        <v-img src="GreenCap.jpg"/>
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" text @click="dialog = false">Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -37,6 +51,8 @@
 <script>
 import SingleCard from "../components/SingleCard";
 import DoubleCard from "../components/DoubleCard";
+import axios from "axios";
+import EventBus from "../EventBus";
 
 export default {
   components: {
@@ -44,7 +60,10 @@ export default {
     DoubleCard
   },
   mounted() {
-    getAllOrders();
+    this.getAllOrders();
+    EventBus.$on("QR_SCANNER", () => {
+      this.dialog = true;
+    });
   },
   computed: {
     firstPageFirstRowOrders: function() {
@@ -71,6 +90,7 @@ export default {
     pageNo: 1,
     maxPages: 6,
     drawer: 0,
+    dialog: false,
     orders: [
       {
         orderNum: "#123",
@@ -111,7 +131,7 @@ export default {
       axios.get("http://localhost:8000/orders/OrderList/").then(response => {
         console.log(response.data);
         this.orders = response.data.orders;
-        this.maxPages = ceil((this.orders - 5) / 6) + 1;
+        this.maxPages = Math.ceil((this.orders - 5) / 6) + 1;
         this.pageNo = this.pageNo > this.maxPages ? this.maxPages : this.pageNo;
       });
     }
@@ -122,7 +142,6 @@ export default {
 <style scoped>
 .overall {
   height: 100%;
-  background-color: brown;
 }
 
 .row {
@@ -139,7 +158,7 @@ export default {
 
 .bottom {
   bottom: 0;
-  background-color: green;
+  background-color: lightgrey;
   padding-bottom: 3rem;
 }
 
